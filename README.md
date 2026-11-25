@@ -207,7 +207,7 @@ extra = { drop_params = true }       # optional
 
 `extra` passes any additional parameters to `litellm.completion()` as is.
 
-> **Notes**
+> [!NOTE]
 > - Never put API keys in `config.toml` — use environment variables.
 > - For Ollama use the `ollama_chat/` prefix: it supports tool calling.
 > - Model names change often; check the exact name in your provider's console.
@@ -298,7 +298,7 @@ Use WSL2 (recommended) or PowerShell.
 
 3. Open Ubuntu: <kbd>Win</kbd> → **Search** → **Ubuntu**, then follow [Linux / macOS](#linux--macos).
 
-> **Note**
+> [!NOTE]
 > Virtualization must be enabled in the BIOS setup of your machine, otherwise you will see
 > the error "0x80370114 The operation could not be started because a required feature is not installed."
 
