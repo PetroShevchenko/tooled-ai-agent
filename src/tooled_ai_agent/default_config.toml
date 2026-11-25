@@ -1,0 +1,46 @@
+# Agent settings. Never put API keys here —
+# export them as environment variables (GEMINI_API_KEY, OPENAI_API_KEY, ...).
+
+[llm]
+# model by default, profile name is from the [models.*] below
+default = "flash"
+
+#---------------------------------------------------------------------------
+# Model profiles.
+#---------------------------------------------------------------------------
+# Profile name (after "models.*") - short name to select model
+#
+# example:  tooled -m flash            # select model from the terminal
+#           /model flash               # select model in the ai chat
+#---------------------------------------------------------------------------
+# model         - name for LiteLLM in the format "provider/model"(mandatory)
+# temperature   - model temperature (optional)
+# extra         - any extra parameters for litellm.completion() (optional)
+#---------------------------------------------------------------------------
+[models.flash]
+model = "vertex_ai/gemini-3.8-flash"
+extra = { vertex_project = "your-project-id", vertex_location = "global", drop_params = true }
+
+[models.pro]
+model = "vertex_ai/gemini-4-argon"    # more expensive model — check name in Model Garden
+extra = { vertex_project = "your-project-id", vertex_location = "global", drop_params = true }
+
+[models.gemini]
+model = "gemini/gemini-3.8-flash"     # Gemini API free tier, requires GEMINI_API_KEY
+temperature = 0.2
+
+[models.local]
+model = "ollama_chat/qwen3"           # local, free: run `ollama pull qwen3` first
+temperature = 0.2
+
+[models.deepseek]
+model = "deepseek/deepseek-chat"      # requires DEEPSEEK_API_KEY in environment
+temperature = 0.2
+
+[agent]
+max_steps = 10                        # safeguard against an infinite loop
+verbose = true                        # print tool calls
+system_prompt = """
+You are a helpful assistant. Use the calculator tool for any calculations.
+Respond in English.
+"""

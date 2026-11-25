@@ -1,0 +1,25 @@
+site_name: tooled-ai-agent
+site_description: Build your first AI agent in Python from scratch
+repo_url: https://github.com/PetroShevchenko/tooled-ai-agent
+docs_dir: docs
+
+nav:
+  - Course: index.md
+
+plugins:
+  - search
+  - i18n:
+      docs_structure: suffix
+      languages:
+        - locale: en
+          name: English
+          default: true
+          build: true
+        - locale: uk
+          name: Українська
+          build: true
+
+markdown_extensions:
+  - admonition
+  - toc:
+      permalink: true

@@ -1,0 +1,33 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "tooled-ai-agent"
+version = "0.1.0"
+description = "Your first AI agent in plain Python, no frameworks — add your own tools in minutes"
+readme = "README.md"
+license = "MIT"
+authors = [{ name = "Petro Shevchenko" }]
+requires-python = ">=3.11"
+dependencies = [
+    "litellm",
+    "google-auth",
+    "platformdirs",
+    "tzdata; sys_platform == 'win32'",
+]
+keywords = ["ai", "agent", "llm", "tool-calling", "tutorial"]
+
+[project.optional-dependencies]
+dev = ["pytest", "ruff"]
+docs = ["mkdocs", "mkdocs-static-i18n"]
+
+[project.scripts]
+tooled-ai-agent = "tooled_ai_agent.cli:main"
+tooled = "tooled_ai_agent.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/PetroShevchenko/tooled-ai-agent"
+
+[tool.setuptools.package-data]
+tooled_ai_agent = ["*.toml"]
