@@ -22,27 +22,32 @@ Chat commands:
 
 import argparse
 import shutil
+import sys
 import time
-from pathlib import Path
 from datetime import datetime
 from importlib import resources
+from pathlib import Path
+
 from platformdirs import user_config_dir
 
+from .colors import BOLD, CYAN, GRAY, GREEN, RED, RESET, YELLOW
+from .commands import handle_command, print_models
 from .core import Agent, Config, ToolRegistry
-from .core.session import SessionLog, list_sessions, search
-from .commands import COMMANDS, handle_command, print_models
-from .colors import RESET, BOLD, RED, GREEN, DARK_GREEN, YELLOW, BLUE, CYAN, GRAY 
+from .core.session import SessionLog
+from .tools import CalculatorTool, CurrentTimeTool
+
 print(f"{GRAY}Loading LLM library...{RESET}\n", flush=True)
 
-from .tools import CalculatorTool, CurrentTimeTool
 
 def parse_arguments() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Simple AI agent")
-    parser.add_argument("-c", "--config",
-                    help="config file (default: ~/.config/tooled-ai-agent/config.toml)")
+    parser.add_argument(
+        "-c", "--config", help="config file (default: ~/.config/tooled-ai-agent/config.toml)"
+    )
     parser.add_argument("-m", "--model", help="profile name from config.toml")
     parser.add_argument("--list", action="store_true", help="show model profiles and exit")
     return parser.parse_args()
+
 
 def config_path(cli_path: str | None) -> Path:
     """Config from -c, otherwise ~/.config/tooled-ai-agent/config.toml.
@@ -58,33 +63,36 @@ def config_path(cli_path: str | None) -> Path:
         print(f"{GRAY}Created default config: {path}{RESET}")
     return path
 
+
 def separator() -> None:
     width = shutil.get_terminal_size().columns
     stamp = datetime.now().strftime("%H:%M:%S")
     print(f"\n{GRAY}{'─' * (width - len(stamp) - 2)} {stamp}{RESET}")
 
+
 def read_input() -> str | None:
     """Reads a user request.
 
-        Returns the entered text, or None if the user wishes to exit
-        (Ctrl+D, or Ctrl+C pressed twice within 2 seconds).
-        A single Ctrl+C discards the typed line and prompts for input again.
+    Returns the entered text, or None if the user wishes to exit
+    (Ctrl+D, or Ctrl+C pressed twice within 2 seconds).
+    A single Ctrl+C discards the typed line and prompts for input again.
     """
     last_interrupt = 0.0
     while True:
         try:
             separator()
             return input(f"{BOLD}{GREEN}❯{RESET} ").strip()
-        except EOFError: # Ctrl+D — exit
+        except EOFError:  # Ctrl+D — exit
             print()
             return None
-        except KeyboardInterrupt: # Ctrl+C
+        except KeyboardInterrupt:  # Ctrl+C
             now = time.monotonic()
-            if now - last_interrupt < 2: # second time in 2 seconds — exit
+            if now - last_interrupt < 2:  # second time in 2 seconds — exit
                 print()
                 return None
             last_interrupt = now
             print(f"\n{GRAY}(press Ctrl+C again to exit){RESET}")
+
 
 def main():
     args = parse_arguments()
@@ -102,7 +110,10 @@ def main():
     except KeyError as e:
         sys.exit(f"{RED}{BOLD}Error: {e.args[0]}{RESET}")
 
-    print(f"{GRAY}Model:{RESET} {BOLD}{YELLOW}{agent.llm.name}{RESET} {GRAY}({agent.llm.model}){RESET}")
+    print(
+        f"{GRAY}Model:{RESET} {BOLD}{YELLOW}{agent.llm.name}{RESET} "
+        f"{GRAY}({agent.llm.model}){RESET}"
+    )
     print(f"{GRAY}Type {YELLOW}/help{GRAY} for commands, empty line to exit.{RESET}")
 
     while True:
@@ -130,7 +141,8 @@ def main():
             print(f"{RED}Error:{RESET} {e}\n")
 
     if session.md_path:
-        print(f"{GRAY}Saved: {session.md_path}{RESET}")   
+        print(f"{GRAY}Saved: {session.md_path}{RESET}")
+
 
 if __name__ == "__main__":
-	main()
+    main()
