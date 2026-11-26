@@ -2,6 +2,8 @@
 
 ![tooled-ai-agent](docs/assets/images/tooled-ai-agent-banner-1280x300.webp)
 
+[![CI](https://github.com/PetroShevchenko/tooled-ai-agent/actions/workflows/ci.yml/badge.svg)](https://github.com/PetroShevchenko/tooled-ai-agent/actions/workflows/ci.yml)
+[![Docs](https://github.com/PetroShevchenko/tooled-ai-agent/actions/workflows/docs.yml/badge.svg)](https://petroshevchenko.github.io/tooled-ai-agent/)
 [![Python 3.11+](https://img.shields.io/badge/python-3.11%2B-blue)](https://www.python.org)
 [![License: MIT](https://img.shields.io/badge/license-MIT-green)](LICENSE)
 
@@ -24,8 +26,8 @@ Let's build it together, brick by brick — learning, making mistakes, and fixin
 
 A step-by-step course, from the first run to your own tools and MCP:
 
-- 🇬🇧 [English](docs/index.md)
-- 🇺🇦 [Українська](docs/index.uk.md)
+- 🇬🇧 [English](https://petroshevchenko.github.io/tooled-ai-agent/)
+- 🇺🇦 [Українська](https://petroshevchenko.github.io/tooled-ai-agent/uk/)
 
 Each lesson has its own git tag with the code for exactly that stage,
 so you only see the code relevant to the lesson:
