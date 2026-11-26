@@ -27,3 +27,5 @@ markdown_extensions:
 
 theme:
   name: material
+  features:
+    - content.code.copy
