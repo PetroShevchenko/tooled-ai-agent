@@ -235,13 +235,14 @@ You are a helpful assistant. Use the calculator tool for any calculations.
 
    from ..core.tool import Tool
 
+
    class CurrentTimeTool(Tool):
        name = "current_time"
-       description = (                     # the model sees ONLY this text
+       description = (  # the model sees ONLY this text
            "Returns the current date and time. "
            "Use it whenever the answer depends on today's date or the current time."
        )
-       parameters = {                      # JSON Schema of the arguments
+       parameters = {  # JSON Schema of the arguments
            "type": "object",
            "properties": {
                "timezone": {"type": "string", "description": "IANA time zone, e.g. 'Europe/Kyiv'"}

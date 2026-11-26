@@ -1,19 +1,23 @@
 """Load settings from config.toml."""
 
 from __future__ import annotations
+
 import os
 import tomllib
+from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Any
-from dataclasses import dataclass, field
+
 
 @dataclass
 class LLMConfig:
     """One model profile from section [models.<name>]."""
-    name: str                      # short profile name, ex. "flash"
-    model: str                     # name for LiteLLM, ex. "vertex_ai/gemini-3.8-flash"
+
+    name: str  # short profile name, ex. "flash"
+    model: str  # name for LiteLLM, ex. "vertex_ai/gemini-3.8-flash"
     temperature: float | None = None
     extra: dict[str, Any] = field(default_factory=dict)  # extra parameters for litellm
+
 
 @dataclass
 class AgentConfig:
@@ -21,14 +25,15 @@ class AgentConfig:
     verbose: bool = True
     system_prompt: str = "You are a helpful assistant."
 
+
 @dataclass
 class Config:
-    models: dict[str, LLMConfig]   # all profiles: name -> settings
-    default_model: str             # default profile name
+    models: dict[str, LLMConfig]  # all profiles: name -> settings
+    default_model: str  # default profile name
     agent: AgentConfig
 
     @classmethod
-    def load(cls, path: str | Path = "config.toml") -> "Config":
+    def load(cls, path: str | Path = "config.toml") -> Config:
         path = Path(path)
         if not path.exists():
             raise FileNotFoundError(f"Configuration file not found: {path.resolve()}")
@@ -43,7 +48,9 @@ class Config:
         models: dict[str, LLMConfig] = {}
         for name, m in models_data.items():
             if "model" not in m:
-                raise ValueError(f"The `model` parameter is missing in the `[models.{name}]` profile.")
+                raise ValueError(
+                    f"The `model` parameter is missing in the `[models.{name}]` profile."
+                )
             models[name] = LLMConfig(
                 name=name,
                 model=m["model"],
@@ -70,7 +77,7 @@ class Config:
     def get_model(self, name: str | None = None) -> LLMConfig:
         """Returns model profile
 
-        Selection order: 
+        Selection order:
             argument name -> AGENT_MODEL environment variable -> [llm] (default).
         """
         name = name or os.getenv("AGENT_MODEL") or self.default_model

@@ -1,15 +1,16 @@
 """Agent: agent cycle + conversation history."""
 
 from __future__ import annotations
+
 import json
 from typing import Any
 
-from .config import Config, LLMConfig
-from .tool import ToolRegistry
-from .session import SessionLog
-
+from ..colors import GRAY, RED, RESET
 from ..spinner import Spinner
-from ..colors import RESET, BOLD, RED, GREEN, YELLOW, BLUE, CYAN, GRAY
+from .config import Config, LLMConfig
+from .session import SessionLog
+from .tool import ToolRegistry
+
 
 class Agent:
     """LLM agent with tools.
@@ -29,9 +30,9 @@ class Agent:
         self.session: SessionLog | None = None
         self.reset()
 
-    #----------------------------------------------------
+    # ----------------------------------------------------
     # public methods
-    #----------------------------------------------------
+    # ----------------------------------------------------
 
     def set_model(self, name: str) -> None:
         """Switches the model. Conversation history is preserved."""
@@ -44,7 +45,7 @@ class Agent:
     def run(self, task: str) -> str:
         """Performs a single user task and returns the final response."""
         self.last_tokens = {"in": 0, "out": 0}
-        start = len(self.messages)          # remember history state
+        start = len(self.messages)  # remember history state
         self.messages.append({"role": "user", "content": task})
 
         try:
@@ -62,15 +63,16 @@ class Agent:
 
             return f"{RED}Stopped: step limit exceeded.{RESET}"
         except BaseException:
-            del self.messages[start:]       # remove not finished exchange
+            del self.messages[start:]  # remove not finished exchange
             raise
 
-    #----------------------------------------------------
+    # ----------------------------------------------------
     # internal methods
-    #----------------------------------------------------
+    # ----------------------------------------------------
 
     def _call_llm(self) -> Any:
         from litellm import completion
+
         llm = self.llm
         params: dict[str, Any] = {
             "model": llm.model,
@@ -107,6 +109,4 @@ class Agent:
                 self.session.log_tool(name, args, result)
 
         # tool_call_id links the result to a specific call.
-        self.messages.append(
-            {"role": "tool", "tool_call_id": call.id, "content": result}
-        )
+        self.messages.append({"role": "tool", "tool_call_id": call.id, "content": result})

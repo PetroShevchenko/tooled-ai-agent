@@ -7,6 +7,7 @@ import time
 
 from .colors import GRAY, RESET
 
+
 class Spinner:
     FRAMES = "⠋⠙⠹⠸⠼⠴⠦⠧⠇⠏"
 
@@ -16,7 +17,7 @@ class Spinner:
         self._thread: threading.Thread | None = None
 
     def __enter__(self) -> "Spinner":
-        if sys.stdout.isatty():            # We do not write the animation to a file/pipe
+        if sys.stdout.isatty():  # We do not write the animation to a file/pipe
             self._thread = threading.Thread(target=self._spin, daemon=True)
             self._thread.start()
         return self
@@ -25,7 +26,7 @@ class Spinner:
         self._stop.set()
         if self._thread:
             self._thread.join()
-            sys.stdout.write("\r\033[K")    # delete spinner row
+            sys.stdout.write("\r\033[K")  # delete spinner row
             sys.stdout.flush()
 
     def _spin(self) -> None:
@@ -34,5 +35,5 @@ class Spinner:
             elapsed = time.monotonic() - start
             sys.stdout.write(f"\r{GRAY}{frame} {self.text}… ({elapsed:.0f}s){RESET}")
             sys.stdout.flush()
-            if self._stop.wait(0.1):        # frame every 0.1 s
+            if self._stop.wait(0.1):  # frame every 0.1 s
                 break

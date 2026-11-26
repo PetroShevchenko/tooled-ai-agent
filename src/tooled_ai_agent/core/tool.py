@@ -1,10 +1,12 @@
 """Agent tool: base class, registry."""
 
 from __future__ import annotations
+
 from abc import ABC, abstractmethod
 from typing import Any
 
-from ..colors import RESET, BOLD, RED, GREEN, YELLOW, BLUE, CYAN, GRAY
+from ..colors import RED, RESET, YELLOW
+
 
 class Tool(ABC):
     """Base class for a tool.
@@ -15,6 +17,7 @@ class Tool(ABC):
       parameters  — JSON Schema for the arguments
       run()       — the actual logic; returns a string
     """
+
     name: str
     description: str
     parameters: dict[str, Any]
@@ -32,6 +35,7 @@ class Tool(ABC):
                 "parameters": self.parameters,
             },
         }
+
 
 class ToolRegistry:
     """Stores tools and executes them by name."""

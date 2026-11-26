@@ -20,8 +20,9 @@ def test_calculator_rejects_code():
 
 def test_current_time_format():
     # "2026-11-25 21:42:00 EET (Wednesday)"
-    assert re.fullmatch(r"\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2} \S+ \(\w+\)",
-                        CurrentTimeTool().run("Europe/Kyiv"))
+    assert re.fullmatch(
+        r"\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2} \S+ \(\w+\)", CurrentTimeTool().run("Europe/Kyiv")
+    )
 
 
 def test_registry_executes_and_reports_errors():

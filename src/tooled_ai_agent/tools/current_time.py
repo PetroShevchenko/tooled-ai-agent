@@ -5,6 +5,7 @@ from zoneinfo import ZoneInfo
 
 from ..core.tool import Tool
 
+
 class CurrentTimeTool(Tool):
     name = "current_time"
     description = (
@@ -17,7 +18,7 @@ class CurrentTimeTool(Tool):
             "timezone": {
                 "type": "string",
                 "description": "IANA time zone, e.g. 'Europe/Kyiv' or 'Asia/Tokyo'. "
-                               "Omit to use the local time of this computer.",
+                "Omit to use the local time of this computer.",
             }
         },
         "required": [],

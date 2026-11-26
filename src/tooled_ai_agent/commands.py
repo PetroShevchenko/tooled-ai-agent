@@ -1,4 +1,5 @@
 """Slash commands of the chat."""
+
 from pathlib import Path
 
 from .colors import GRAY, GREEN, RED, RESET, YELLOW
@@ -16,8 +17,10 @@ COMMANDS = [
     ("empty line", "exit"),
 ]
 
+
 def short(path: Path) -> str:
     return str(path).replace(str(Path.home()), "~", 1)
+
 
 def print_models(config: Config, current: str | None = None) -> None:
     for name, m in config.models.items():
@@ -29,13 +32,15 @@ def print_models(config: Config, current: str | None = None) -> None:
         suffix = f"  ({', '.join(marks)})" if marks else ""
         print(f"  {name:<10} {m.model}{suffix}")
 
+
 def show_help() -> None:
     print(f"{GRAY}Available commands:{RESET}")
     for cmd, desc in COMMANDS:
         print(f"  {YELLOW}{cmd:<15}{RESET} {GRAY}{desc}{RESET}")
 
+
 def handle_command(text: str, agent: Agent, session: SessionLog) -> None:
-    cmd, _, arg = text.partition(" ") # "/model local" -> cmd="/model", arg="local"
+    cmd, _, arg = text.partition(" ")  # "/model local" -> cmd="/model", arg="local"
     arg = arg.strip()
 
     if cmd == "/help":
@@ -45,8 +50,13 @@ def handle_command(text: str, agent: Agent, session: SessionLog) -> None:
     elif cmd == "/model" and arg:
         try:
             agent.set_model(arg)
-            session.log_event("model", f"Switched to {agent.llm.name}", name=agent.llm.name, model=agent.llm.model)
-            print(f"{GRAY}Model:{RESET} {YELLOW}{agent.llm.name}{RESET} {GREEN}({agent.llm.model}){RESET}\n")
+            session.log_event(
+                "model", f"Switched to {agent.llm.name}", name=agent.llm.name, model=agent.llm.model
+            )
+            print(
+                f"{GRAY}Model:{RESET} {YELLOW}{agent.llm.name}{RESET} "
+                f"{GREEN}({agent.llm.model}){RESET}\n"
+            )
         except KeyError as e:
             print(f"{RED}{e.args[0]}{RESET}\n")
     elif cmd == "/reset":
@@ -55,7 +65,10 @@ def handle_command(text: str, agent: Agent, session: SessionLog) -> None:
         print("History cleared.\n")
     elif cmd == "/usage":
         s = agent.session_tokens
-        print(f"{GRAY}Session:{RESET} ↑ {s['in']:,} in, ↓ {s['out']:,} out, total {s['in'] + s['out']:,}")
+        print(
+            f"{GRAY}Session:{RESET} ↑ {s['in']:,} in, ↓ {s['out']:,} out, "
+            f"total {s['in'] + s['out']:,}"
+        )
     elif cmd == "/history":
         for i, s in enumerate(list_sessions(), 1):
             print(f"  {GRAY}{i:>2}. {s.date}{RESET}  {s.title}")

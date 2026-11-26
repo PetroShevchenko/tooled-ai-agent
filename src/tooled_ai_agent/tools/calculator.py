@@ -1,8 +1,10 @@
 """Calculator tool."""
 
-from ..core.tool import Tool
 import ast
 import operator
+
+from ..core.tool import Tool
+
 
 class CalculatorTool(Tool):
     """Safe calculator: numbers and arithmetic only, no eval()."""
@@ -37,7 +39,7 @@ class CalculatorTool(Tool):
         result = self._eval(ast.parse(expression, mode="eval").body)
         if isinstance(result, int):
             return str(result)  # integers — unchanged: 2**100 will remain exact
-        return f"{result:.10g}" # 25.200000000000003 → 25.2
+        return f"{result:.10g}"  # 25.200000000000003 → 25.2
 
     def _eval(self, node: ast.AST) -> float:
         if isinstance(node, ast.Constant) and isinstance(node.value, (int, float)):
