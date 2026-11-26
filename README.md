@@ -27,7 +27,7 @@ A step-by-step course, from the first run to your own tools and MCP:
 - 🇬🇧 [English](docs/index.md)
 - 🇺🇦 [Українська](docs/index.uk.md)
 
-Almost every lesson has its own git tag with the code for exactly that stage,
+Each lesson has its own git tag with the code for exactly that stage,
 so you only see the code relevant to the lesson:
 
 ```bash
@@ -207,7 +207,7 @@ extra = { drop_params = true }       # optional
 
 `extra` passes any additional parameters to `litellm.completion()` as is.
 
-> [!NOTE]
+> [!TIP]
 > - Never put API keys in `config.toml` — use environment variables.
 > - For Ollama use the `ollama_chat/` prefix: it supports tool calling.
 > - Model names change often; check the exact name in your provider's console.
@@ -298,7 +298,7 @@ Use WSL2 (recommended) or PowerShell.
 
 3. Open Ubuntu: <kbd>Win</kbd> → **Search** → **Ubuntu**, then follow [Linux / macOS](#linux--macos).
 
-> [!NOTE]
+> [!IMPORTANT]
 > Virtualization must be enabled in the BIOS setup of your machine, otherwise you will see
 > the error "0x80370114 The operation could not be started because a required feature is not installed."
 
