@@ -1,5 +1,8 @@
 .venv/
 dist/
+site/
 *.egg-info/
 __pycache__/
+.pytest_cache/
+.ruff_cache/
 *.env
