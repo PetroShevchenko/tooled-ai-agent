@@ -20,7 +20,7 @@ keywords = ["ai", "agent", "llm", "tool-calling", "tutorial"]
 
 [project.optional-dependencies]
 dev = ["pytest", "ruff"]
-docs = ["mkdocs", "mkdocs-static-i18n"]
+docs = ["mkdocs", "mkdocs-material", "mkdocs-static-i18n"]
 
 [project.scripts]
 tooled-ai-agent = "tooled_ai_agent.cli:main"

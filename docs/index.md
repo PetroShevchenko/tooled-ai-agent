@@ -1,28 +1,48 @@
 # Course: your first AI agent
 
-This course is for anyone who wants to understand how an AI agent works
-and write their own tools for it. We go top-down: first we use the ready-made
+Welcome to my course on building your own AI agent.
+This course is for anyone who wants to understand, for the first time, how an
+AI agent works and write their own tools for it.
+
+Throughout the course we go top-down: first we learn to use the ready-made
 `tooled-ai-agent`, then we look at how it works inside, extend it, and finally
 prepare it for real-world tasks.
 
-**Prerequisites:** Python basics (functions, classes, dictionaries) and the terminal.
+!!! important
+    **Prerequisites:**
 
-**Lesson code:** starting from lesson 5, every lesson has its own git tag
-with the code for exactly that stage:
+    - Python basics (functions, classes, dictionaries)
+    - Working in a terminal (bash, PowerShell)
+
+!!! note
+    **How to use the lesson code:** every lesson has a git tag `lesson-NN` that
+    pins the code as of that lesson. The latest version is always in `main`.
 
 ```bash
-git checkout lesson-05-first-tool    # code of lesson 5
-git checkout main                    # full version
+git checkout lesson-01    # code of lesson 1
+git checkout main         # full version
 ```
 
-The **"Used later"** note shows where a tool or technique will be reused
-in real agents: a Git assistant and an SDD framework.
+!!! warning
+    `git checkout lesson-01` puts the repository into a detached HEAD state.
+    If the folder has uncommitted changes, stash them while you look at the lesson:
+```bash
+git stash          # put your changes aside
+git checkout lesson-01
+# ... look at the lesson code ...
+git checkout main  # go back
+git stash pop      # restore your changes
+```
+
+!!! note
+    The **"Used later"** note shows where a tool or technique will be reused
+    in real agents: a Git assistant and an SDD framework.
 
 ---
 
 ## Part 1. The user
 
-### Lesson 1. Installation and first run
+### [Lesson 1. Installation and first run](lessons/01-installation-and-first-run.md) 🚧
 
 **Goal:** install the agent, connect a language model and ask the first question.
 
@@ -38,7 +58,7 @@ in real agents: a Git assistant and an SDD framework.
 **Practice:** ask the agent 3–4 questions, find one of them with `/search`
 and open the saved conversation as an `.md` file.
 
-### Lesson 2. How the agent talks to the model
+### [Lesson 2. How the agent talks to the model](lessons/02-how-the-agent-talks-to-the-model.md) 🚧
 
 **Goal:** understand what happens during a single model call.
 
@@ -55,7 +75,7 @@ to the same question and the difference in `/usage`.
 
 ## Part 2. How the agent works
 
-### Lesson 3. Tools (tool calling)
+### [Lesson 3. Tools (tool calling)](lessons/03-tools-tool-calling.md) 🚧
 
 **Goal:** understand how a model "uses" tools without running any code.
 
@@ -69,7 +89,7 @@ to the same question and the difference in `/usage`.
 **Practice:** use `/debug` to find the moment the model asks for the calculator
 and the moment it receives the result.
 
-### Lesson 4. The agent loop
+### [Lesson 4. The agent loop](lessons/04-the-agent-loop.md) 🚧
 
 **Goal:** take apart the heart of the agent: the "model → tool → model" loop.
 
@@ -85,7 +105,7 @@ grow in `/debug`. Set `max_steps = 1` and see what changes.
 
 ## Part 3. Extending the agent
 
-### Lesson 5. Your first tool
+### [Lesson 5. Your first tool](lessons/05-your-first-tool.md) 🚧
 
 **Goal:** write your own tool and connect it to the agent.
 
@@ -97,7 +117,7 @@ grow in `/debug`. Set `max_steps = 1` and see what changes.
 **Practice:** write `exchange_rate` (the open National Bank of Ukraine API)
 or `get_weather` (Open-Meteo) on your own.
 
-### Lesson 6. Reading and searching files
+### [Lesson 6. Reading and searching files](lessons/06-reading-and-searching-files.md) 🚧
 
 **Goal:** let the agent find its way around project files safely.
 
@@ -113,7 +133,7 @@ SDD needs to find where to implement each task.
 **Practice:** ask the agent to find every place where `ToolRegistry` is used
 and to explain how `tooled-ai-agent` works.
 
-### Lesson 7. Changing files, safety and confirmation
+### [Lesson 7. Changing files, safety and confirmation](lessons/07-changing-files-safety-and-confirmation.md) 🚧
 
 **Goal:** let the agent change files while you stay in control.
 
@@ -132,7 +152,7 @@ and to explain how `tooled-ai-agent` works.
 the confirmation step protects you. Then run the agent in a container
 and check that files outside the working directory are out of its reach.
 
-### Lesson 8. Running commands and tests
+### [Lesson 8. Running commands and tests](lessons/08-running-commands-and-tests.md) 🚧
 
 **Goal:** let the agent run commands without losing control.
 
@@ -148,7 +168,7 @@ SDD checks every task with tests.
 **Practice:** ask the agent to run the project's tests, find why one fails
 (break a test on purpose) and suggest a fix.
 
-### Lesson 9. System prompt, agent profiles and memory
+### [Lesson 9. System prompt, agent profiles and memory](lessons/09-system-prompt-agent-profiles-and-memory.md) 🚧
 
 **Goal:** turn one engine into different agents.
 
@@ -160,7 +180,7 @@ SDD checks every task with tests.
 **Practice:** create your own profile, for example a "translator"
 or a "code reviewer", with only the tools it needs.
 
-### Lesson 10. Planning inside the agent loop
+### [Lesson 10. Planning inside the agent loop](lessons/10-planning-inside-the-agent-loop.md) 🚧
 
 **Goal:** teach the agent to ask and plan instead of guessing.
 
@@ -179,7 +199,7 @@ and see which questions it asks and how it splits the work into steps.
 
 ## Part 4. Preparing for real-world tasks
 
-### Lesson 11. Reliability
+### [Lesson 11. Reliability](lessons/11-reliability.md) 🚧
 
 **Goal:** the agent must not crash or hang because of model failures.
 
@@ -193,7 +213,7 @@ and see which questions it asks and how it splits the work into steps.
 **Practice:** set up a chain of fallback models and simulate a failure of the main one
 (for example, a wrong model name).
 
-### Lesson 12. The core as a library: events instead of `print`
+### [Lesson 12. The core as a library: events instead of `print`](lessons/12-the-core-as-a-library-events-instead-of-print.md) 🚧
 
 **Goal:** separate the agent logic from the interface so the same core
 works in a terminal, on the web or inside another agent.
@@ -212,7 +232,7 @@ that import `tooled-ai-agent` as a library.
 **Practice:** write a 20–30 line script that creates an agent in code,
 gives it a task and logs every tool call to a file, with no output on screen.
 
-### Lesson 13. MCP: connecting ready-made servers (client)
+### [Lesson 13. MCP: connecting ready-made servers (client)](lessons/13-mcp-connecting-ready-made-servers-client.md) 🚧
 
 **Goal:** give the agent tools from any MCP server.
 
@@ -231,7 +251,7 @@ instead of writing its own tools for PRs/MRs and issues.
 **Practice:** connect the filesystem MCP server and compare its tools
 with your own `list_files` / `read_file`.
 
-### Lesson 14. MCP: your own server
+### [Lesson 14. MCP: your own server](lessons/14-mcp-your-own-server.md) 🚧
 
 **Goal:** look at the protocol from the other side and make your tools
 available to any MCP client.
@@ -249,7 +269,7 @@ available to any MCP client.
 **Practice:** build an MCP server with the `exchange_rate` tool and call it
 from two different clients.
 
-### Lesson 15. Final project: a Git agent
+### [Lesson 15. Final project: a Git agent](lessons/15-final-project-a-git-agent.md) 🚧
 
 **Goal:** build an agent for a real task out of everything you have learned.
 
