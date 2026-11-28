@@ -6,6 +6,22 @@ site_url: https://petroshevchenko.github.io/tooled-ai-agent/
 
 nav:
   - Course: index.md
+  - Lessons:
+      - lessons/01-installation-and-first-run.md
+      - lessons/02-how-the-agent-talks-to-the-model.md
+      - lessons/03-tools-tool-calling.md
+      - lessons/04-the-agent-loop.md
+      - lessons/05-your-first-tool.md
+      - lessons/06-reading-and-searching-files.md
+      - lessons/07-changing-files-safety-and-confirmation.md
+      - lessons/08-running-commands-and-tests.md
+      - lessons/09-system-prompt-agent-profiles-and-memory.md
+      - lessons/10-planning-inside-the-agent-loop.md
+      - lessons/11-reliability.md
+      - lessons/12-the-core-as-a-library-events-instead-of-print.md
+      - lessons/13-mcp-connecting-ready-made-servers-client.md
+      - lessons/14-mcp-your-own-server.md
+      - lessons/15-final-project-a-git-agent.md
 
 plugins:
   - search
@@ -19,6 +35,9 @@ plugins:
         - locale: uk
           name: Українська
           build: true
+          nav_translations:
+            Course: Курс
+            Lessons: Уроки
 
 markdown_extensions:
   - admonition
@@ -28,4 +47,5 @@ markdown_extensions:
 theme:
   name: material
   features:
+    - navigation.expand
     - content.code.copy
