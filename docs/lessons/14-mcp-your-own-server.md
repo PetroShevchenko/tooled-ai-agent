@@ -3,8 +3,9 @@
 > 🚧 **This lesson is in progress.** Below is what it will cover.
 > Watch the repository for updates.
 
-**Goal:** look at the protocol from the other side and make your tools
-available to any MCP client.
+!!! abstract "Lesson goal"
+    Look at the protocol from the other side and make your tools
+    available to any MCP client.
 
 - An MCP server in Python with the official SDK (FastMCP)
 - A server tool is a plain function with type hints and a docstring
@@ -16,8 +17,9 @@ available to any MCP client.
 
 **Used later:** tools you write for the Git assistant can be used by other agents too.
 
-**Practice:** build an MCP server with the `exchange_rate` tool and call it
-from two different clients.
+!!! example "Practice"
+    Build an MCP server with the `exchange_rate` tool and call it
+    from two different clients.
 
 ---
 

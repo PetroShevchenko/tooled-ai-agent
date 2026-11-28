@@ -3,8 +3,9 @@
 > 🚧 **This lesson is in progress.** Below is what it will cover.
 > Watch the repository for updates.
 
-**Goal:** separate the agent logic from the interface so the same core
-works in a terminal, on the web or inside another agent.
+!!! abstract "Lesson goal"
+    Separate the agent logic from the interface so the same core
+    works in a terminal, on the web or inside another agent.
 
 - The problem: `Agent` prints tool calls and runs the spinner itself,
   so it cannot be used without a terminal
@@ -17,8 +18,9 @@ works in a terminal, on the web or inside another agent.
 **Used later:** the Git assistant and the SDD framework will be separate projects
 that import `tooled-ai-agent` as a library.
 
-**Practice:** write a 20–30 line script that creates an agent in code,
-gives it a task and logs every tool call to a file, with no output on screen.
+!!! example "Practice"
+    Write a 20–30 line script that creates an agent in code,
+    gives it a task and logs every tool call to a file, with no output on screen.
 
 ---
 

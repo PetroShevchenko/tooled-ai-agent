@@ -3,7 +3,8 @@
 > 🚧 **This lesson is in progress.** Below is what it will cover.
 > Watch the repository for updates.
 
-**Goal:** understand what happens during a single model call.
+!!! abstract "Lesson goal"
+    Understand what happens during a single model call.
 
 - Project structure
 - `config.toml`: where it comes from, how to change it, model profiles
@@ -11,8 +12,9 @@
 - Tokens, `temperature`, thinking mode and why it affects speed
 - Local vs cloud models: speed, quality, cost
 
-**Practice:** add your own model profile, compare two models' answers
-to the same question and the difference in `/usage`.
+!!! example "Practice"
+    Add your own model profile, compare two models' answers
+    to the same question and the difference in `/usage`.
 
 ---
 

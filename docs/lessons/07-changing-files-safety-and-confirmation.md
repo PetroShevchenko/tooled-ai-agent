@@ -3,7 +3,8 @@
 > 🚧 **This lesson is in progress.** Below is what it will cover.
 > Watch the repository for updates.
 
-**Goal:** let the agent change files while you stay in control.
+!!! abstract "Lesson goal"
+    Let the agent change files while you stay in control.
 
 - `write_file` — create or overwrite a file
 - `edit_file` — replace a fragment instead of rewriting the whole file
@@ -16,9 +17,10 @@
 **Used later:** confirmation is the safety basis of the Git assistant;
 `edit_file` is the main tool for implementing tasks in SDD.
 
-**Practice:** try to "trick" the agent through the contents of a file and make sure
-the confirmation step protects you. Then run the agent in a container
-and check that files outside the working directory are out of its reach.
+!!! example "Practice"
+    Try to "trick" the agent through the contents of a file and make sure
+    the confirmation step protects you. Then run the agent in a container
+    and check that files outside the working directory are out of its reach.
 
 ---
 

@@ -3,7 +3,8 @@
 > 🚧 **This lesson is in progress.** Below is what it will cover.
 > Watch the repository for updates.
 
-**Goal:** give the agent tools from any MCP server.
+!!! abstract "Lesson goal"
+    Give the agent tools from any MCP server.
 
 - What MCP is and why it exists: one protocol instead of a separate
   integration with every service
@@ -17,8 +18,9 @@
 **Used later:** the Git assistant can use the official GitHub and GitLab MCP servers
 instead of writing its own tools for PRs/MRs and issues.
 
-**Practice:** connect the filesystem MCP server and compare its tools
-with your own `list_files` / `read_file`.
+!!! example "Practice"
+    Connect the filesystem MCP server and compare its tools
+    with your own `list_files` / `read_file`.
 
 ---
 

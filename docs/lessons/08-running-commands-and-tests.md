@@ -3,7 +3,8 @@
 > 🚧 **This lesson is in progress.** Below is what it will cover.
 > Watch the repository for updates.
 
-**Goal:** let the agent run commands without losing control.
+!!! abstract "Lesson goal"
+    Let the agent run commands without losing control.
 
 - `run_command`: an allow list, confirmation, a timeout
 - Trimming long output: the first and last lines instead of thousands
@@ -14,8 +15,9 @@
 **Used later:** the Git assistant runs git commands and analyses CI logs;
 SDD checks every task with tests.
 
-**Practice:** ask the agent to run the project's tests, find why one fails
-(break a test on purpose) and suggest a fix.
+!!! example "Practice"
+    Ask the agent to run the project's tests, find why one fails
+    (break a test on purpose) and suggest a fix.
 
 ---
 

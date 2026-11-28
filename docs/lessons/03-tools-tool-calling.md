@@ -3,7 +3,8 @@
 > 🚧 **This lesson is in progress.** Below is what it will cover.
 > Watch the repository for updates.
 
-**Goal:** understand how a model "uses" tools without running any code.
+!!! abstract "Lesson goal"
+    Understand how a model "uses" tools without running any code.
 
 - The model only *asks* for a function call; our code runs it
 - Describing a tool with JSON Schema
@@ -12,8 +13,9 @@
 - Why every tool description costs tokens in *every* request
 - The `/debug` command: raw requests and responses
 
-**Practice:** use `/debug` to find the moment the model asks for the calculator
-and the moment it receives the result.
+!!! example "Practice"
+    Use `/debug` to find the moment the model asks for the calculator
+    and the moment it receives the result.
 
 ---
 

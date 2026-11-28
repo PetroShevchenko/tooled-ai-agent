@@ -3,7 +3,8 @@
 > 🚧 **This lesson is in progress.** Below is what it will cover.
 > Watch the repository for updates.
 
-**Goal:** the agent must not crash or hang because of model failures.
+!!! abstract "Lesson goal"
+    The agent must not crash or hang because of model failures.
 
 - A request timeout instead of waiting forever
 - Retries on temporary errors (network, overload)
@@ -12,8 +13,9 @@
 
 **Used later:** both agents — long tasks must not stop because of a single failure.
 
-**Practice:** set up a chain of fallback models and simulate a failure of the main one
-(for example, a wrong model name).
+!!! example "Practice"
+    Set up a chain of fallback models and simulate a failure of the main one
+    (for example, a wrong model name).
 
 ---
 
