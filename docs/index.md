@@ -14,6 +14,8 @@ prepare it for real-world tasks.
     - Python basics (functions, classes, dictionaries)
     - Working in a terminal (bash, PowerShell)
 
+<a id="lesson-code"></a>
+
 !!! note
     **How to use the lesson code:** every lesson has a git tag `lesson-NN` that
     pins the code as of that lesson. The latest version is always in `main`.
@@ -42,15 +44,15 @@ git stash pop      # restore your changes
 
 ## Part 1. The user
 
-### [Lesson 1. Installation and first run](lessons/01-installation-and-first-run.md) 🚧
+### [Lesson 1. Installation and first run](lessons/01-installation-and-first-run.md)
 
 **Goal:** install the agent, connect a language model and ask the first question.
 
+- Installing as a regular command with `pipx`
 - Installing on your platform:
     - **Linux / macOS:** the `install.sh` and `env.sh` scripts
     - **Windows (recommended):** WSL2 (`wsl --install`), then the same as Linux
     - **Windows without WSL:** plain Python commands in PowerShell (`python -m venv`, `pip install -e .`)
-- Installing as a regular command with `pipx`
 - Connecting a model: free (Ollama) or cloud (Vertex AI, API key)
 - The first request
 - Commands: `/help`, `/models`, `/model`, `/usage`, `/history`, `/search`
